@@ -4,13 +4,14 @@ project(utils_general)
 find_package(catkin REQUIRED)
 
 catkin_package(
-    INCLUDE_DIRS ..
+    INCLUDE_DIRS include
     LIBRARIES LibUtil
 )
 
 
 find_package(Eigen REQUIRED)
 include_directories(
+    include
   ${EIGEN_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
 )
@@ -18,26 +19,25 @@ include_directories(
 find_package(OpenCV REQUIRED)
 
 add_library (LibUtil SHARED
-    CircleEstimator.cpp
-    ConfigFileReader.cpp
-    EggTimer.cpp
-    EigenTools.cpp
-    Graphics.cpp
-    LogCollector.cpp
-    LowPassFilter.cpp
-    MathHelper.cpp
-    Misc.cpp
-    Stopwatch.cpp
-    Strings.cpp
-    RamaxxException.cpp
-    CvMathHelper.cpp
-    CvContourManipulator.cpp
-    LaserTo3DTransformation.cpp
-    Path.cpp
-    runningstat.cpp
-    Line2d.cpp
-    Line2dSegment.cpp
-    QtCvImageConverter.cpp
+    src/CircleEstimator.cpp
+    src/ConfigFileReader.cpp
+    src/EggTimer.cpp
+    src/EigenTools.cpp
+    src/Graphics.cpp
+    src/LogCollector.cpp
+    src/LowPassFilter.cpp
+    src/MathHelper.cpp
+    src/Misc.cpp
+    src/Stopwatch.cpp
+    src/Strings.cpp
+    src/RamaxxException.cpp
+    src/CvMathHelper.cpp
+    src/CvContourManipulator.cpp
+    src/LaserTo3DTransformation.cpp
+    src/Path.cpp
+    src/runningstat.cpp
+    src/Line2d.cpp
+    src/Line2dSegment.cpp
 )
 
 target_link_libraries(LibUtil

@@ -16,8 +16,8 @@
 #include <cmath>
 #include <Eigen/LU>
 // Project
-#include "Line2d.h"
-#include "MathHelper.h"
+#include <utils_general/Line2d.h>
+#include <utils_general/MathHelper.h>
 
 using namespace Eigen;
 using namespace std;

@@ -8,8 +8,8 @@
 #include <ios>
 
 // Project
-#include "LogCollector.h"
-#include "Misc.h"
+#include <utils_general/LogCollector.h>
+#include <utils_general/Misc.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION

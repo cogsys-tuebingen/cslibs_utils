@@ -11,8 +11,8 @@
 #include <sstream>
 #include <fstream>
 
-#include "Path.h"
-#include "RamaxxException.h"
+#include <utils_general/Path.h>
+#include <utils_general/RamaxxException.h>
 
 using namespace std;
 

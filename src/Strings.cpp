@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Strings.h"
+#include <utils_general/Strings.h>
 
 #include <sstream>
 

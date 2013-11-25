@@ -7,7 +7,7 @@
 **************************************************************************/
 #include <math.h>
 #include <iostream>
-#include "CircleEstimator.h"
+#include <utils_general/CircleEstimator.h>
 
 CircleEstimator::CircleEstimator (double threshold)
 {

@@ -1,4 +1,4 @@
-#include "runningstat.h"
+#include <utils_general/runningstat.h>
 #include <cmath>
 
 RunningStat::RunningStat() : m_n(0)

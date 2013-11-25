@@ -2,8 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include "Strings.h"
-#include "ConfigFileReader.h"
+#include <utils_general/Strings.h>
+#include <utils_general/ConfigFileReader.h>
 
 ConfigFileReader::ConfigFileReader()
 {
