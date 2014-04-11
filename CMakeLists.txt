@@ -8,8 +8,14 @@ catkin_package(
     LIBRARIES LibUtil
 )
 
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(Eigen REQUIRED)
+find_package(Eigen)
+if(NOT ${Eigen_FOUND})
+  find_package(Eigen3 REQUIRED)
+endif()
+
 include_directories(
     include
   ${EIGEN_INCLUDE_DIR}
@@ -42,6 +48,7 @@ add_library (LibUtil SHARED
 
 target_link_libraries(LibUtil
     ${OpenCV_LIBS}
+    ${Boost_LIBRARIES}
 )
 
 install (TARGETS LibUtil LIBRARY DESTINATION lib)

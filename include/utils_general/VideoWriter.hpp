@@ -3,10 +3,16 @@
 
 /// SYSTEM
 #include <opencv2/opencv.hpp>
+#include <boost/version.hpp>
 #include <boost/filesystem.hpp>
 #include <iomanip>
 
+#if (BOOST_VERSION / 100000) >= 1 && (BOOST_VERSION / 100 % 1000) >= 54
+namespace bf3 = boost::filesystem;
+#else
 namespace bf3 = boost::filesystem3;
+#endif
+
 
 class ExternalVideoWriter {
 public:
