@@ -11,7 +11,7 @@ catkin_package(
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(Eigen)
+find_package(Eigen QUIET)
 if(NOT ${Eigen_FOUND})
   find_package(Eigen3 REQUIRED)
 endif()
