@@ -68,6 +68,64 @@ double MathHelper::Angle( const Vector2d &v ) {
   return 0.0;
 }
 
+double MathHelper::ApproxSin(const double angle)
+{
+    double angle_ = MathHelper::AngleClamp(angle);
+
+    if(angle_ == 0.0) {
+        return 1.0;
+    }
+
+    double sin(0.0);
+
+    if (angle_ < 0) {
+        sin = 1.27323954 * angle_ + .405284735 * angle_ * angle_;
+
+        if (sin < 0.0)
+            sin = .225 * (sin *-sin - sin) + sin;
+        else
+            sin = .225 * (sin * sin - sin) + sin;
+
+    } else {
+        sin = 1.27323954 * angle_ - 0.405284735 * angle_ * angle_;
+
+        if (sin < 0)
+            sin = .225 * (sin *-sin - sin) + sin;
+        else
+            sin = .225 * (sin * sin - sin) + sin;
+    }
+
+    return sin;
+}
+
+double MathHelper::ApproxCos(const double angle)
+{
+    double angle_ = MathHelper::AngleClamp(angle + M_PI_2);
+
+    if(angle_ == 0.0) {
+        return 0.0;
+    }
+
+    double cos(0.0);
+    if (angle_ < 0) {
+        cos = 1.27323954 * angle_ + 0.405284735 * angle_ * angle_;
+
+        if (cos < 0)
+            cos = .225 * (cos *-cos - cos) + cos;
+        else
+            cos = .225 * (cos * cos - cos) + cos;
+    } else {
+        cos = 1.27323954 * angle_ - 0.405284735 * angle_ * angle_;
+
+        if (cos < 0)
+            cos = .225 * (cos *-cos - cos) + cos;
+        else
+            cos = .225 * (cos * cos - cos) + cos;
+    }
+
+    return cos;
+}
+
 double MathHelper::AngleClamp( double angleRad ) {
     while (angleRad < -M_PI)
         angleRad += 2*M_PI;
