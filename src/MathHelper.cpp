@@ -54,6 +54,7 @@ double MathHelper::Angle( const Vector2d &v1, const Vector2d &v2 ) {
 }
 
 double MathHelper::Angle( const Vector2d &v ) {
+    //TODO: Why not use atan2?
   if ( v[0] > 0 )
     return atan( v[1] / v[0]);
   if ( v[0] < 0 && v[1] >= 0 )
