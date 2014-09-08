@@ -49,6 +49,10 @@ public:
 
   static double Angle( const Eigen::Vector2d &v );
 
+  static double ApproxSin(const double angle);
+
+  static double ApproxCos(const double angle);
+
   static double OdomDistance( const Eigen::Vector3d &p1, const Eigen::Vector3d &p2 );
 
   /// Clamps the angle in radians into the interval [-pi, pi)
