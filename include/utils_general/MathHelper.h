@@ -106,6 +106,41 @@ public:
     return true;
   }
 
+
+
+  /**
+   * @brief Represents a line in parametric form.
+   *
+   * This struct is meant for use with PathFollower::fitLinear(). It contains a point of the line, a direction
+   * vector and a normal vector. The vectors are expected to be normalized.
+   * Furthermore there is a soundness value. The smaller this value is, the closer fits the line to the points.
+   */
+  struct Line {
+      //! A point lying on the line.
+      Eigen::Vector2d point;
+      //! Direction vector.
+      Eigen::Vector2d direction;
+      //! Soundness of the fitted line (smaller values means better fitting).
+      float soundness;
+
+      Line() {
+          direction = point = Eigen::Vector2d::Zero();
+          soundness = 0;
+      }
+  };
+
+  /**
+   * @brief Fit a line to a set of points (in 2-dim. space).
+   *
+   * The resulting line is returned in parametric form, but it also contains the normal vector.
+   * Both, direction vector and normal vector are normalized to length 1.
+   *
+   * @param points A set of points, the line shall be fitted to.
+   * @return Resulting line in parametric representation.
+   * @see MathHelper::Line
+   */
+  static Line FitLinear(const std::vector<Vector2d> &points);
+
 };
 
 

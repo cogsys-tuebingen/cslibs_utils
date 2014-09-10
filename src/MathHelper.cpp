@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 #include <utils_general/MathHelper.h>
-
+#include <Eigen/Dense>
 
 
 // C/C++
@@ -54,7 +54,6 @@ double MathHelper::Angle( const Vector2d &v1, const Vector2d &v2 ) {
 }
 
 double MathHelper::Angle( const Vector2d &v ) {
-    //TODO: Why not use atan2?
   if ( v[0] > 0 )
     return atan( v[1] / v[0]);
   if ( v[0] < 0 && v[1] >= 0 )
@@ -135,6 +134,41 @@ double MathHelper::AngleClamp( double angleRad ) {
         angleRad -= 2*M_PI;
 
     return angleRad;
+}
+
+MathHelper::Line MathHelper::FitLinear(const std::vector<Vector2d> &points)
+{
+    /*
+     * This is a modified version of the function fitHyperplane() of eigen3 (eigen2support/LeastSquares.h),
+     * which seems to be deprecated and thus is not used here directly.
+     */
+
+    // need at least two points.
+    assert(points.size() > 1);
+
+    Line result;
+
+    // compute the mean of the data
+    Vector2d mean = Vector2d::Zero(2);
+    for (size_t i = 0; i < points.size(); ++i) {
+        mean += points[i];
+    }
+    mean /= points.size();
+
+    // compute the covariance matrix
+    Matrix2d covMat = Matrix2d::Zero(2,2);
+    for (vector<Vector2d>::const_iterator point = points.begin(); point != points.end(); ++point) {
+        Vector2d diff = (*point - mean).conjugate();
+        covMat += diff * diff.adjoint();
+    }
+
+    // now we just have to pick the eigen vector with largest eigen value
+    SelfAdjointEigenSolver<Matrix2d> eig(covMat);
+    result.direction = eig.eigenvectors().col(1); // eigen vector with largest eigen value (= direction of the line)
+    result.point = mean;
+    result.soundness = eig.eigenvalues().coeff(0)/eig.eigenvalues().coeff(1);
+
+    return result;
 }
 
 
