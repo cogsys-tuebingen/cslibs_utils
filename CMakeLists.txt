@@ -13,14 +13,11 @@ catkin_package(
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(Eigen QUIET)
-if(NOT ${Eigen_FOUND})
-  find_package(Eigen3 REQUIRED)
-endif()
+find_package(Eigen3 REQUIRED)
 
 include_directories(
     include
-  ${EIGEN_INCLUDE_DIR}
+  ${EIGEN3_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
 )
 
