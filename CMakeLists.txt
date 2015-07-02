@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(utils_general)
 
+add_definitions(-W -Wall -Wno-unused-parameter -fno-strict-aliasing -Wno-unused-function -Wno-deprecated-register)
+
 find_package(catkin REQUIRED COMPONENTS cmake_modules)
 
 catkin_package(
@@ -11,14 +13,11 @@ catkin_package(
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(Eigen QUIET)
-if(NOT ${Eigen_FOUND})
-  find_package(Eigen3 REQUIRED)
-endif()
+find_package(Eigen3 REQUIRED)
 
 include_directories(
     include
-  ${EIGEN_INCLUDE_DIR}
+  ${EIGEN3_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
 )
 
