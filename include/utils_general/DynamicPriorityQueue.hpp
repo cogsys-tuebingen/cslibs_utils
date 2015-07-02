@@ -26,6 +26,8 @@ class DynamicPrioritySet : public std::multiset<_Key, _Compare>
     typedef typename S::size_type size_type;
     typedef typename S::const_reference const_reference;
     typedef typename S::iterator iterator;
+
+public:
     typedef typename S::const_iterator const_iterator;
 
 public:
@@ -52,6 +54,15 @@ public:
 //            }
 //            assert(comp(*i, *next));
 //        }
+    }
+
+    const_iterator begin() const
+    {
+        return S::begin();
+    }
+    const_iterator end() const
+    {
+        return S::end();
     }
 
     value_type top() const
