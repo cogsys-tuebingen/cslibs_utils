@@ -3,7 +3,7 @@ project(utils_general)
 
 add_definitions(-W -Wall -Wno-unused-parameter -fno-strict-aliasing -Wno-unused-function -Wno-deprecated-register)
 
-find_package(catkin REQUIRED COMPONENTS cmake_modules)
+find_package(catkin REQUIRED COMPONENTS cmake_modules tf)
 
 catkin_package(
     INCLUDE_DIRS include
