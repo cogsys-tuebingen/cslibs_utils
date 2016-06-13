@@ -105,3 +105,9 @@ void Stopwatch::resume() {
 int Stopwatch::sElapsedStatic() {
     return mStop.tv_sec;
 }
+
+int Stopwatch::usElapsedStatic() {
+    int seconds = mStop.tv_sec;
+    int useconds = mStop.tv_usec;
+    return seconds * 1000000 + useconds;
+}

@@ -27,6 +27,7 @@ public:
     double sElapsedDouble() const;
     double elapsed() const;
     int sElapsedStatic();
+    int usElapsedStatic();
 
     friend std::ostream& operator<<(std::ostream& stream, const Stopwatch&);
     
