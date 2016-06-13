@@ -25,7 +25,6 @@ public:
     int sElapsed() const;
     int msElapsed() const;
     int usElapsed() const;
-    long nsElapsed() const;
     double sElapsedDouble() const;
     double elapsed() const;
     int sElapsedStatic();
