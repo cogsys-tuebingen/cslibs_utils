@@ -8,7 +8,6 @@
 #ifndef STOPWATCH_H_
 #define STOPWATCH_H_
 
-//#include <sys/time.h>
 #include <time.h>
 #include <ostream>
 
@@ -36,8 +35,6 @@ public:
 private:
     timespec mStart;
     timespec mStop;
-    //timeval mStart;
-    //timeval mStop;
     bool stopped;
 };
 
