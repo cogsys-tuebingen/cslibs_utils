@@ -8,7 +8,7 @@
 #ifndef STOPWATCH_H_
 #define STOPWATCH_H_
 
-#include <sys/time.h>
+#include <time.h>
 #include <ostream>
 
 class Stopwatch {
@@ -27,12 +27,14 @@ public:
     double sElapsedDouble() const;
     double elapsed() const;
     int sElapsedStatic();
+    int usElapsedStatic();
+    long nsElapsedStatic();
 
     friend std::ostream& operator<<(std::ostream& stream, const Stopwatch&);
     
 private:
-    timeval mStart;
-    timeval mStop;
+    timespec mStart;
+    timespec mStop;
     bool stopped;
 };
 
