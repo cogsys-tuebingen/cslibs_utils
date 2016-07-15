@@ -24,7 +24,7 @@ const char * Strings::WHITE_SPACES_DELIMITERS = " \t";
 void Strings::SplitFileName (const string& fname, string& path, string& file)
 {
     // look for path delimiter in filename
-    int pos = fname.find_last_of("/\\");
+    std::size_t pos = fname.find_last_of("/\\");
     if (pos != string::npos)
     {
         // extract path
@@ -89,7 +89,7 @@ void Strings::ConcatPath (string& out_path, const string& path,
 int Strings::Find (const StringVector& line, const char *value) {
     int pos=0;
     bool found=false;
-    while (pos<line.size() && !found) {
+    while (pos<(int)line.size() && !found) {
         if (line[pos]==value) 
             found =true;
         else
@@ -103,7 +103,7 @@ int Strings::Find (const StringVector& line, const char *value) {
 
 string& Strings::Trim (string& line)
 {
-    int pos1 = line.find_first_not_of(WHITE_SPACES_ALL);
+    std::size_t pos1 = line.find_first_not_of(WHITE_SPACES_ALL);
     if (pos1==string::npos) {
         line.assign("");
     } else {
@@ -116,14 +116,14 @@ string& Strings::Trim (string& line)
 
 string&  Strings::Trim (string& line, const char *trash)
 {
-    int pos1 = line.find_first_not_of(trash);
+    std::size_t pos1 = line.find_first_not_of(trash);
     if (pos1!=string::npos) {
         line.erase(0,pos1);
     } else {
         line.erase();
         return line;
     }
-    int pos2 = line.find_last_not_of(trash);
+    std::size_t pos2 = line.find_last_not_of(trash);
     if ((pos2!=line.length()-1)&&(pos2!=string::npos)) {
         line.erase(pos2+1);
     }
@@ -135,7 +135,7 @@ string&  Strings::Trim (string& line, const char *trash)
 string& Strings::TrimRight(string &line)
 {
 
-    int ppos;
+    std::size_t ppos;
     //trim white spaces at right side of strline 
     if( ((ppos = line.find_last_not_of(WHITE_SPACES_ALL)) != string::npos) && (ppos+1 != line.length()))
     {
@@ -256,12 +256,13 @@ int Strings::ToS64 (const string& str, S64& result)
         return EOK;
     }
     */
+    return EOK; // suppress warning
 }
 
 
 int Strings::ToDouble (const string& str, double& result)
 {
-    int pos;
+    std::size_t pos;
     string c;
     const char *buf;
     if( (pos=str.find('d')) != string::npos  || (pos=str.find('D')) != string::npos ) 
@@ -446,7 +447,7 @@ bool Strings::IsDigit (char c)
 int Strings::Hash (const string& str)
 {
     int hash = 2054435761;
-    for (int i=0;i<str.length();++i) {
+    for (std::size_t i=0;i<str.length();++i) {
         hash ^=str[i];
         hash <<= 1;
     }
@@ -456,7 +457,7 @@ int Strings::Hash (const string& str)
 
 string Strings::ToUpper(const string& s)
 {
-    int i;
+    std::size_t i;
     string res;
 
     res.resize(s.length());
@@ -470,7 +471,7 @@ string Strings::ToUpper(const string& s)
 
 string Strings::ToLower(const string& s)
 {
-    int i;
+    std::size_t i;
     string res;
 
     res.resize(s.length());

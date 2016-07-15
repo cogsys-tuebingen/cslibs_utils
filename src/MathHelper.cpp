@@ -1682,7 +1682,7 @@ double sampleNormalDistribution(double b)
 
 void randPerm(int n,std::vector<int>& p)
 {
-	if (p.size() != n)
+    if ((int) p.size() != n)
 		p.resize(n);
 
 	for (int i = 0; i < n; i++) {
@@ -1695,7 +1695,7 @@ void randPerm(int n,std::vector<int>& p)
 
 void randSampleNoReplacement(int nmax, int nsamples, std::vector<int>& p)
 {
-	if (p.size() != nsamples)
+    if ((int) p.size() != nsamples)
 		p.resize(nsamples);
 
 	for (int i = 0; i < nsamples; i++) {

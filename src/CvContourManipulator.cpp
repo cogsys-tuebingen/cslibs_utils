@@ -214,7 +214,7 @@ void CvContourManipulator::transformContourTree(CvSeq* contour,
 void CvContourManipulator::drawContour(IplImage* image, CvSeq* contour,
 		CvScalar foregroundColor, CvScalar backgroundColor)
 {
-	CvRect boundingBox = ((CvContour*) contour)->rect;
+    //	CvRect boundingBox = ((CvContour*) contour)->rect;
 	//	if (image->width != (boundingBox.width + boundingBox.x) || image->height != (boundingBox.height + boundingBox.y)) {
 	//		cout << "WARNING: Size of destination image (" << image->width << "x" << image->height << ") ";
 	//		cout << "does not match the blob size (" << boundingBox.width << "x" << boundingBox.height << ")." << endl;

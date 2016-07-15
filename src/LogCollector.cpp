@@ -109,7 +109,7 @@ void LogCollector::addColumns(const std::list<string>& ids)
 
 bool LogCollector::addColumn(const string &id)
 {
-  addColumn(id,id,false);
+  return addColumn(id,id,false);
 }
 
 
@@ -135,8 +135,10 @@ bool LogCollector::addColumn( const string &id, const string &description, bool 
 
     // Write description if logging is enabled
     if ( mEnabled ) {
-        writeDescription( col, mOutStream );
+        return writeDescription( col, mOutStream );
     }
+
+    return true;
 }
 
 bool LogCollector::addValue( const string &id, double value ) {
@@ -163,7 +165,7 @@ bool LogCollector::addValue( const string &id, double value ) {
 }
 
 bool LogCollector::addValue( const string &id, int value ) {
-    addValue( id, (double)value );
+    return addValue( id, (double)value );
 }
 
 bool LogCollector::writeDescription( const LogColumn &col, ofstream * outStream ) {

@@ -56,7 +56,7 @@ void ConfigFileReader::Load(std::string filename)
             // Parse line
             if (line.size() > 0 && line[0] != '#')
             {
-                int pos = line.find('=');
+                std::size_t pos = line.find('=');
 
                 if (pos > 0)
                 {
