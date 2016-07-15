@@ -1351,8 +1351,12 @@ bool pineda(point2D t1, point2D t2, point2D t3, point2D p)
   return true;
 }
 
-bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4, point2D& p, double& s, double& t)
+bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4, point2D& p, double& s, double& t, double eps)
 {
+    if(eps <= 0.0) {
+        eps = std::numeric_limits<double>::epsilon();
+    }
+
 	p.first = 0.0;
 	p.second = 0.0;
 	s = 0.0;
@@ -1372,7 +1376,7 @@ bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4, point2D
 	double t2 = x1*y4 + x4*y2 + x2*y3 + x3*y1 - x4*y1 - x1*y3 - x3*y2 - x2*y4;
 	double t1, s1, s2;
 
-	const double eps = std::numeric_limits<double>::epsilon();
+
 	if (-eps <= t2 && t2 <= eps) t2 = 0.0;
 	if (t2 != 0.0) {
 		t1 = x1*y2 + x2*y3 + x3*y1 - x2*y1 - x3*y2 - x1*y3;

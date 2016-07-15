@@ -430,7 +430,7 @@ bool pineda(point2D t1, point2D t2, point2D t3, point2D p);
 
 /// Determines wheter the segments (p1, p2) and (p3, p4) intersect each other or not, 
 /// and calculates the intersection point p.
-bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4, point2D& p, double& s, double& t);
+bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4, point2D& p, double& s, double& t, double eps = -1.0);
 
 /// Determines wheter the segments (p1, p2) and (p3, p4) intersect each other or not.
 bool segmentIntersection(point2D p1, point2D p2, point2D p3, point2D p4);
