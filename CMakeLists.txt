@@ -3,27 +3,28 @@ project(utils_general)
 
 add_definitions(-W -Wall -Wno-unused-parameter -fno-strict-aliasing -Wno-unused-function -Wno-deprecated-register)
 
-find_package(catkin REQUIRED COMPONENTS cmake_modules tf)
+find_package(catkin REQUIRED COMPONENTS tf)
 
 catkin_package(
     INCLUDE_DIRS include
-    LIBRARIES LibUtil
+    LIBRARIES ${PROJECT_NAME}
+    DEPENDS Eigen3 OpenCV
 )
 
 find_package(Boost COMPONENTS system filesystem REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 find_package(Eigen3 REQUIRED)
 
-include_directories(
-    include
-  ${EIGEN3_INCLUDE_DIR}
-  ${catkin_INCLUDE_DIRS}
-)
 
 find_package(OpenCV REQUIRED)
 
-add_library (LibUtil SHARED
+
+
+include_directories(include)
+include_directories(SYSTEM  ${EIGEN3_INCLUDE_DIR})# ${catkin_INCLUDE_DIRS})
+
+add_library (${PROJECT_NAME} SHARED
     src/CircleEstimator.cpp
     src/ConfigFileReader.cpp
     src/EggTimer.cpp
@@ -45,12 +46,13 @@ add_library (LibUtil SHARED
     src/Line2dSegment.cpp
 )
 
-target_link_libraries(LibUtil
+target_link_libraries(${PROJECT_NAME}
     ${OpenCV_LIBS}
     ${Boost_LIBRARIES}
+    ${catkin_LIBRARIES}
 )
 
-install(TARGETS LibUtil
+install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
