@@ -9,7 +9,7 @@
 #ifndef CIRCLEESTIMATOR_H
 #define CIRCLEESTIMATOR_H
 #include <list>
-#include <utils_general/StatsEstimator.h>
+#include <cslibs_utils/StatsEstimator.h>
 #include "Eigen/Core"
 using namespace Eigen;
 

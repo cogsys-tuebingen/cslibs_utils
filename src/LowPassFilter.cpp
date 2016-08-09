@@ -10,7 +10,7 @@ using namespace Eigen;
 
 // Project
 
-#include <utils_general/LowPassFilter.h>
+#include <cslibs_utils/LowPassFilter.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // IMPLEMENTATION

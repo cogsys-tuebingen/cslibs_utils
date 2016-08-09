@@ -5,8 +5,8 @@
  *      Author: Sebastian Scherer <sebastian.scherer@uni-tuebingen.de>
  */
 
-#include <utils_general/Stopwatch.h>
-#include <utils_general/RamaxxException.h>
+#include <cslibs_utils/Stopwatch.h>
+#include <cslibs_utils/RamaxxException.h>
 
 #include <cstdio>
 
