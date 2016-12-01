@@ -16,13 +16,15 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 find_package(Eigen3 REQUIRED)
 
-
 find_package(OpenCV REQUIRED)
 
 
 
 include_directories(include)
-include_directories(SYSTEM  ${EIGEN3_INCLUDE_DIR})# ${catkin_INCLUDE_DIRS})
+include_directories(SYSTEM
+    ${EIGEN3_INCLUDE_DIR}
+    ${catkin_INCLUDE_DIRS}
+)
 
 add_library (${PROJECT_NAME} SHARED
     src/CircleEstimator.cpp
