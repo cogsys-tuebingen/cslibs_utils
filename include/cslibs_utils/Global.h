@@ -12,9 +12,6 @@
 #include <string>
 #include <Eigen/Core>
 #include <iostream>
-using namespace Eigen;
-
-using namespace std;
 
 // some types with defined length
 typedef unsigned char       U8;
@@ -37,18 +34,18 @@ enum {
     EINVALID                =  -6 // general invalid argument
 };
 
-typedef vector<int> IVector;
-typedef vector<double> DVector;
-typedef vector<float> FVector;
-typedef list<int> IList;
-typedef list<double> DList;
-typedef list<float> FList;
-typedef list<string> StringList;
-typedef vector<string> StringVector;
-typedef std::list<Vector2d,Eigen::aligned_allocator<Eigen::Vector2d> > Vector2dList;
-typedef std::list<Vector3d,Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dList;
-typedef std::vector<Vector2d,Eigen::aligned_allocator<Eigen::Vector2d> > Vector2dVec;
-typedef std::vector<Vector3d,Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dVec;
+typedef std::vector<int> IVector;
+typedef std::vector<double> DVector;
+typedef std::vector<float> FVector;
+typedef std::list<int> IList;
+typedef std::list<double> DList;
+typedef std::list<float> FList;
+typedef std::list<std::string> StringList;
+typedef std::vector<std::string> StringVector;
+typedef std::list<Eigen::Vector2d,Eigen::aligned_allocator<Eigen::Vector2d> > Vector2dList;
+typedef std::list<Eigen::Vector3d,Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dList;
+typedef std::vector<Eigen::Vector2d,Eigen::aligned_allocator<Eigen::Vector2d> > Vector2dVec;
+typedef std::vector<Eigen::Vector3d,Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dVec;
 
 #define MSGOUT(message) {\
     char filepath[] = __FILE__;\

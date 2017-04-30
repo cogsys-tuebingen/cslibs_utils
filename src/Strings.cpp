@@ -12,6 +12,8 @@
 
 #include <sstream>
 
+using namespace std;
+
 // white space is also the not so often used 
 // Vertical tab     VT  11  \v
 // Carriage return  CR  13  \r

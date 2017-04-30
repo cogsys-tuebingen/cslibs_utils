@@ -24,18 +24,16 @@
 // DECLARATIONS
 ////////////////////////////////////////////////////////////////////////////////
 
-using namespace std;
-
 // Typedefs and Structs
 typedef struct {
     bool   isTrigger;
     double value;
-    string description;
+    std::string description;
     int colNum;
 } LogColumn;
 
-typedef map<string,int> LogColumnMap;
-typedef vector<LogColumn> ColumnVector;
+typedef std::map<std::string,int> LogColumnMap;
+typedef std::vector<LogColumn> ColumnVector;
 
 /**
  * Collect and save log data ordered by time.
@@ -63,11 +61,11 @@ public:
      *
      * @return False if id exists already, true otherwise
      */
-    bool addColumn( const string& id, const string& description , bool isTrigger = false );
+    bool addColumn( const std::string& id, const std::string& description , bool isTrigger = false );
 
-    bool addColumn( const string& id);
+    bool addColumn( const std::string& id);
 
-    void addColumns(const std::list<string>& ids);
+    void addColumns(const std::list<std::string>& ids);
 
     /**
      * Enable collecting of data.
@@ -77,7 +75,7 @@ public:
      *
      * @return False if there was an error, true otherwise.
      */
-    bool enable( const string &fileName, bool overwrite = false );
+    bool enable( const std::string &fileName, bool overwrite = false );
 
     /**
      * Disable logging. The logfile will be closed.
@@ -92,7 +90,7 @@ public:
      *
      * @return false if id does not exist
      */
-    bool addValue( const string& id, double value );
+    bool addValue( const std::string& id, double value );
 
     /**
      * Adds value to the end of a data column.
@@ -102,7 +100,7 @@ public:
      *
      * @return false if id does not exist
      */
-    bool addValue( const string& id, int value );
+    bool addValue( const std::string& id, int value );
 
     /**
      * Returns the current log data.
@@ -110,7 +108,7 @@ public:
      * @param data The current data will be written to this variable, the data
      *      equals one line in the logfile.
      */
-    void getCurrentValues( vector<double> &data ) const;
+    void getCurrentValues( std::vector<double> &data ) const;
 
     /**
      * Write the current log data to the logfile.
@@ -134,7 +132,7 @@ protected:
      *
      * @return True if there was no error, false otherwise.
      */
-    virtual bool writeLine( ofstream* outStream );
+    virtual bool writeLine( std::ofstream* outStream );
 
     /**
      * Write a column description to the logfile.
@@ -144,7 +142,7 @@ protected:
      *
      * @return True if there was no error, false otherwise.
      */
-    virtual bool writeDescription( const LogColumn &col, ofstream * outStream );
+    virtual bool writeDescription( const LogColumn &col, std::ofstream * outStream );
 
     // Member
     /** Flag if logging is enabled. */
@@ -154,7 +152,7 @@ protected:
     /** Holds the columns in ascending order. */
     ColumnVector  mColData;
     /** Logfile out or NULL if logging is disabled. */
-    ofstream *    mOutStream;
+    std::ofstream *    mOutStream;
     /** Number of columns. */
     int           mColNum;
     /** Logging enable timestamp. */

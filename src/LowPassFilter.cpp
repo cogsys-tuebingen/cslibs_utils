@@ -57,7 +57,7 @@ void LowPassFilter<T>::SetCoefficients( const vector<T> &coeff ) {
 template <class T>
 T LowPassFilter<T>::Update( const T& newValue ) {
     mPos++;
-    if ( mPos >= GetSize()) {
+    if ( mPos >= (T) GetSize()) {
         mPos = 0;
         mLoaded = true;
     }
@@ -70,7 +70,7 @@ T LowPassFilter<T>::Update( const T& newValue ) {
     for ( size_t i = mPos; i < GetSize(); ++i ) {
         mValue += ( mData[i] * mCoeff[i - mPos] );
     }
-    for ( size_t i = 0; i < mPos; ++i ) {
+    for ( size_t i = 0; i < (T) mPos; ++i ) {
         mValue += ( mData[i] * mCoeff[ i + GetSize() - mPos ]);
     }
     mValue /= mCoeffSum;

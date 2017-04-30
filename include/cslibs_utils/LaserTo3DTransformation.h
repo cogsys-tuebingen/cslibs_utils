@@ -21,7 +21,7 @@ public:
         void transform(double angle, double dist, const Eigen::Quaterniond& quat,const Eigen::Vector3d& laserPos, Eigen::Vector3d& res);
 
 private:
-        const Vector3d mTrans;
+        const Eigen::Vector3d mTrans;
 };
 
 #endif /* LASERTO3DTRANSFORMATION_H_ */

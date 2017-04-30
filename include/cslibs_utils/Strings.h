@@ -20,14 +20,14 @@ public:
         @param res_tokens resulting ist of tokens
         @return number of tokens
     */
-    static int Split(const string& line, const char *seps, const char *trash,
+    static int Split(const std::string& line, const char *seps, const char *trash,
         StringList& res_tokens);
 
     /**
         splits the given string into tokens
         @return number of tokens
     */
-    static int Split(const string& line, const char *seps,
+    static int Split(const std::string& line, const char *seps,
         StringVector& res_tokens);
 
     /**
@@ -44,7 +44,7 @@ public:
         @param[out] result the splitted pair.
         @return STATUS_OK is successfully splitted, otherwise an appropriate errorcode
     */
-    static int SplitPair(const string& line, const char* seps, pair<string,string>& result);
+    static int SplitPair(const std::string& line, const char* seps, std::pair<std::string,std::string>& result);
 
     /**
         Splits the given string <fname> in <path> and <filename>.
@@ -54,8 +54,8 @@ public:
         @param[in] path the base path
         @param[in] file the element appended to the base path.
     */
-    static void	SplitFileName (const string& fname, string& path, 
-        string& file);
+    static void	SplitFileName (const std::string& fname, std::string& path,
+        std::string& file);
 
     /**
         Concats path and fname to absolute path.
@@ -64,8 +64,8 @@ public:
         @param[in] path the base path
         @param[in] file the element appended to the base path.
     */
-    static void	ConcatFileName (string& out_fname, const string& path,
-        const string& fname);
+    static void	ConcatFileName (std::string& out_fname, const std::string& path,
+        const std::string& fname);
 
 
     /**
@@ -76,7 +76,7 @@ public:
         @param[in] sub_dir the directory name that should be appended to the base path.
         @return STATUS_OK if method succeeds otherwise an appropriate errorcode.
     */
-    static void ConcatPath (string& out_path, const string& path, const string& sub_dir);
+    static void ConcatPath (std::string& out_path, const std::string& path, const std::string& sub_dir);
 
 
     /**
@@ -87,38 +87,38 @@ public:
         @param[in] sub_dirs vector containing the subdirectory names that should be appended.
         @return STATUS_OK if method succeeds otherwise an appropriate errorcode.
     */
-    static void ConcatPath (string& out_path, const string& path, const vector<string>& sub_dirs);
+    static void ConcatPath (std::string& out_path, const std::string& path, const std::vector<std::string>& sub_dirs);
 
 
     /**
         Find String in StringVector and return position. 
         -1 if not found
     */ 
-    static int      Find(const StringVector& line, const char *value);
+    static int Find(const StringVector& line, const char *value);
 
     /**
         removes trailing whitespace from line
     */ 
-    static string&  TrimRight (string &line);
+    static std::string&  TrimRight (std::string &line);
 
     /**
         removes  preceding whitespace from line
     */ 
-    static string&  TrimLeft (string &line);
+    static std::string&  TrimLeft (std::string &line);
 
     /**
         removes left and right white space (' ','\t','\n')
         from line
     */
-    static string&  Trim (string &line);
+    static std::string&  Trim (std::string &line);
 
     /**
         removes from left and right all characters listed in <code>trash</code>
         from line       
     */
-    static string&  Trim (string &line, const char *trash);
+    static std::string&  Trim (std::string &line, const char *trash);
 
-    static string& PadLeft(string& str, Uint width, char pad = ' ');
+    static std::string& PadLeft(std::string& str, Uint width, char pad = ' ');
 
     /**
         pads the given string with characters (default blank)
@@ -126,14 +126,14 @@ public:
         up to given width, do nothing if string.length>=width
         @return the padded string
     */
-    static string&  PadRight(string& str, Uint width, char pad=' ');
+    static std::string&  PadRight(std::string& str, Uint width, char pad=' ');
 
-    static string&  Append(string& str, int val);
+    static std::string&  Append(std::string& str, int val);
     /**
         converts a fortran string (not null terminated) to a c++ string
 
     */
-    static string&  Assign (string& str, const char *fortran_str, int len);
+    static std::string&  Assign (std::string& str, const char *fortran_str, int len);
 
 
     template <class T>
@@ -158,14 +158,14 @@ public:
         converts given list of integers to string with numbers separated
         by space
     */
-    static string   ListToString (const IList& int_list);
+    static std::string   ListToString (const IList& int_list);
 
     /**
         converts string to integer
         (the std fun atoi() does the same, but without error detection)
         @return STATUS_OK or ERR_NOT_FOUND (if conversion failed)
     */
-    static int      ToInt (const string& str, int& result);
+    static int ToInt (const std::string& str, int& result);
 
 
     /**
@@ -181,27 +181,27 @@ public:
         @param[out] result the result of the conversion.
         @return STATUS_OK is successfully converted otherwise an appropriate errorcode.
     */
-    static int ToS64 (const string& str, S64& result);
+    static int ToS64 (const std::string& str, S64& result);
 
     /**
         converts string to double
         @return STATUS_OK or ERR_NOT_FOUND (if conversion failed)
     */
-    static int      ToDouble (const string& str, double& result);
+    static int      ToDouble (const std::string& str, double& result);
 
     /**
         converts string which is a space separated list of numbers to double vector
         Example: "12.8 15e45  27 302.33 50002.0"
         @return number of recognized doubles
     */
-    static int      ToDoubleVec (const string& str, DVector& result, bool clear_result=true);
+    static int      ToDoubleVec (const std::string& str, DVector& result, bool clear_result=true);
     
     /**
         converts string which is a space separated list of numbers to integerlist
         Example: "12 15  27 302 50002"
         @return number of recognized integers
     */
-    static int      ToIList (const string& str, IList& result);
+    static int      ToIList (const std::string& str, IList& result);
 
     /**
         converts string which is a list of numbers separated by given char to integerlist
@@ -210,13 +210,13 @@ public:
         @param seps accepted separator chars in string, like ",; " or "."
         @return number of recognized integers
     */
-    static int      ToIList (const string& str, const char *seps, IList& result);
+    static int      ToIList (const std::string& str, const char *seps, IList& result);
 
     /**
         returns a hash value for string str
         @return hash value
     */
-    static int      Hash (const string& str);
+    static int      Hash (const std::string& str);
 
     /**
         @return true if c is in [0-9]
@@ -232,25 +232,25 @@ public:
         converts argument to uppercase string
         @return uppercased parameter s
     */
-    static string   ToUpper(const string& s);
+    static std::string   ToUpper(const std::string& s);
 
     /**
         converts argument to lowercase string
         @return lowercased parameter s
     */
-    static string   ToLower(const string& s);
+    static std::string   ToLower(const std::string& s);
 
     /**
         converts a byte to a string in binary representation
         MSBit left
     */
-    static string BinToString (U8 n);
+    static std::string BinToString (U8 n);
 
     /**
         converts an integer to a string in binary representation
         MSBit left
     */
-    static string BinToString (int n);
+    static std::string BinToString (int n);
 
 
     /**
@@ -258,13 +258,13 @@ public:
         suffix
         @return string, which ends with suffix
     */
-    static string AppendSuffix(const string& basename, const string& suffix);
+    static std::string AppendSuffix(const std::string& basename, const std::string& suffix);
 
     /**
       Tests if the string starts with given prefix
       @return true if yes, false otherwise
       */
-    static bool StartsWith(const string& str, const string& prefix);
+    static bool StartsWith(const std::string& str, const std::string& prefix);
 
     static const char* WHITE_SPACES_ALL;
     static const char* WHITE_SPACES_DELIMITERS;

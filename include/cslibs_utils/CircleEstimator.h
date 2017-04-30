@@ -11,10 +11,8 @@
 #include <list>
 #include <cslibs_utils/StatsEstimator.h>
 #include "Eigen/Core"
-using namespace Eigen;
 
-
-typedef std::list<Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dList;
+typedef std::list<Eigen::Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > Vector3dList;
 
 /**
   caluclates center and radius of a circle best fitting to
@@ -34,7 +32,7 @@ public:
       */
     void AddPoint (double x, double y,double phi);
 
-    void AddPoint(const Vector3d& p);
+    void AddPoint(const Eigen::Vector3d& p);
 
     void SetThreshold (double thresh) {mThreshold = thresh*thresh;}
     double GetRadius() {return mRadius;}
@@ -46,7 +44,7 @@ public:
     double GetRadiusK() {return mRadiusK;}
 
     Vector3dList* GetPointList()  { return &mPoints; }
-    Vector2d GetCenter();
+    Eigen::Vector2d GetCenter();
     bool IsCircle();
     double GetArcLength();
     void Reset();
@@ -68,7 +66,7 @@ private:
     double  mRadius;
     double mRadiusK;
     double  mArcLength;
-    Vector2d  mCenter;
+    Eigen::Vector2d  mCenter;
     bool    mIsCircle;
     int     mUpdateInterval;
     StatsEstimator<double> mCircleQuality;

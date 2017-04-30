@@ -5,6 +5,8 @@
 #include <cslibs_utils/Strings.h>
 #include <cslibs_utils/ConfigFileReader.h>
 
+using namespace std;
+
 ConfigFileReader::ConfigFileReader()
 {
 }

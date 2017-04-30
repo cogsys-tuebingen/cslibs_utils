@@ -8,8 +8,6 @@
 #include <vector>
 #include <Eigen/Core>
 #include "MathHelper.h"
-using namespace Eigen;
-
 
 #include "Global.h"
 typedef std::pair<double, double> point2D;
@@ -70,7 +68,7 @@ public:
     http://billauer.co.il/peakdet.html
     */
   template <typename T>
-  static bool peakDetect(const vector<T>& data, T delta, vector<unsigned int>& mins, vector<unsigned int>& maxs)
+  static bool peakDetect(const std::vector<T>& data, T delta, std::vector<unsigned int>& mins, std::vector<unsigned int>& maxs)
   {
     T mn=std::numeric_limits<T>::max();
     T mx=std::numeric_limits<T>::min();
@@ -139,7 +137,7 @@ public:
    * @return Resulting line in parametric representation.
    * @see MathHelper::Line
    */
-  static Line FitLinear(const std::vector<Vector2d> &points);
+  static Line FitLinear(const std::vector<Eigen::Vector2d> &points);
 
 };
 
@@ -449,7 +447,7 @@ bool segmentIntersectionMaybe(point2D p1, point2D p2, point2D p3, point2D p4);
    @author bohlmann
    @date 2011/02/23
   */
-bool checkCircleSegmentIntersection (const Vector2d& p1, const Vector2d& p2, const Vector2d& m, double r );
+bool checkCircleSegmentIntersection (const Eigen::Vector2d& p1, const Eigen::Vector2d& p2, const Eigen::Vector2d& m, double r );
 
 /**
   calculates the intersection points of the line segment P1P2 with the circle around M with radius r.
@@ -465,7 +463,8 @@ bool checkCircleSegmentIntersection (const Vector2d& p1, const Vector2d& p2, con
   @author bohlmann
   @date 2011/02/23
   */
-int circleSegmentIntersection(const Vector2d& p1, const Vector2d& p2, const Vector2d& m, double r, Vector2d& s1, Vector2d& s2 );
+int circleSegmentIntersection(const Eigen::Vector2d& p1, const Eigen::Vector2d& p2, const Eigen::Vector2d& m, double r,
+                              Eigen::Vector2d& s1, Eigen::Vector2d& s2 );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -9,6 +9,8 @@
 #include <iostream>
 #include <cslibs_utils/CircleEstimator.h>
 
+using namespace Eigen;
+
 CircleEstimator::CircleEstimator (double threshold)
 {
     Reset();
