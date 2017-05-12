@@ -4,10 +4,9 @@
   <version>1.0.0</version>
   <description>This package contains general utility classes</description>
 
-  <maintainer email="sebastian.buck@uni-tuebingen.de">buck</maintainer>
+  <maintainer email="sebastian.buck@uni-tuebingen.de">Sebastian Buck</maintainer>
 
   <license>BSD</license>
-  <author email="sebastian.buck@uni-tuebingen.de">buck</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
