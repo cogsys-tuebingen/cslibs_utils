@@ -42,7 +42,7 @@ bool LogCollector::enable( const string &fileName, bool overwrite ) {
 
     // Check if the logfile exists already
     int numExt = 1;
-    char buffer[3];
+    char buffer[12];
     string realFileName( fileName );
     while ( Misc::fileExists( realFileName.c_str()) && !overwrite ) {
         // Check if the the buffer is big enought
